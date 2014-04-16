@@ -16,9 +16,8 @@ my %name_map = (
     while( my $entry = glob $log_path ) {
         open my $f, $entry;
         while( my $line = <$f>) {
-            while( $line =~ /(\w+)[ :,]*\+\+/g ) {
+            while( $line =~ /([a-zA-Z0-9]+)[_ :,^-]*\+\+/g ) {
                 my $name = $1;
-                $name =~ s/[_^]*$//;
                 if( exists $name_map{$name} ) {
                     $name = $name_map{$name};
                 }
